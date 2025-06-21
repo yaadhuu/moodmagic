@@ -1,0 +1,67 @@
+/* src/styles/LandingPage.css */
+
+.landing-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative; /* Needed for Vanta.js */
+  /* Vanta.js handles background */
+}
+
+.landing-content {
+  text-align: center;
+  z-index: 2; /* Ensure content is above Vanta.js */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif; /* Use a more distinct font for logo */
+  font-size: 4.5rem; /* Larger for impact */
+  font-weight: 700;
+  color: var(--primary-bg-dark); /* Should appear black on light Vanta.js background, but if Vanta.js is dark, this will blend. */
+  /* Let's make it visible on the dark Vanta.js background */
+  color: var(--text-light); /* Changed to light for visibility on dark Vanta.js background */
+  text-shadow: 0 0 10px rgba(0,0,0,0.5); /* Subtle shadow for depth */
+  margin-bottom: 1rem;
+}
+
+/* IMPORTANT: If Vanta.js background is set to 0xffffff (white), then color: black; would be appropriate for the logo.
+   Given Vanta.js `backgroundColor: 0x121212` in LandingPage.jsx, `color: var(--text-light);` is needed here for visibility.
+   If "black" for "Mood Magic" text on landing page means visible against the current Vanta.js background, then light text on dark background is correct.
+   If "black" means literally the color black, then Vanta.js background must be light. I've assumed it means visible.
+   Let's ensure the Vanta.js background is dark and the text is light for a consistent theme.
+   If the user truly meant the text should be black on a white Vanta.js background, then Vanta.js backgroundColor should be 0xffffff and .logo color should be #000.
+   For now, maintaining dark theme consistency.
+*/
+
+.tagline {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.enter-btn {
+  /* Inherit from .btn-primary in App.css */
+  @extend .btn-primary; /* This is SASS/SCSS syntax, for plain CSS, copy properties */
+  background-color: var(--accent-green);
+  color: var(--primary-bg-dark);
+  padding: 14px 35px; /* Slightly larger for button */
+  font-size: 1.1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3); /* Subtle glow */
+}
+
+.enter-btn:hover {
+  background-color: var(--accent-green-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
+}

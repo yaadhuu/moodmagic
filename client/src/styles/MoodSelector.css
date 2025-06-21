@@ -1,0 +1,42 @@
+/* src/styles/MoodSelector.css */
+
+.selector {
+  background-color: var(--secondary-bg-dark);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.selector h2 {
+  margin-bottom: 25px;
+  color: var(--text-light);
+  font-size: 1.8rem;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.selector-btn {
+  /* Inherit from .btn-secondary in App.css for consistent styling */
+  @extend .btn-secondary; /* Use SASS/SCSS or copy properties for plain CSS */
+  background-color: var(--tertiary-bg-dark);
+  color: var(--text-light);
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 8px; /* Slightly less rounded than global buttons */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.selector-btn.selected, /* Add a class for selected state */
+.selector-btn:hover {
+  background-color: var(--accent-green);
+  color: var(--primary-bg-dark);
+  transform: translateY(-2px);
+}

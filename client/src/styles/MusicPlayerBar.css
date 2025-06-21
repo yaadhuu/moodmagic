@@ -1,0 +1,77 @@
+/* src/styles/MusicPlayerBar.css */
+
+.music-player-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--secondary-bg-dark); /* Darker background for the bar */
+  border-top: 1px solid var(--border-dark);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Ensure it stays on top */
+  color: var(--text-light);
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.player-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.player-artwork {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-song-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-artist-name {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-controls {
+  flex: 0 0 auto; /* Don't grow or shrink */
+  display: flex;
+  align-items: center;
+}
+
+.player-controls audio {
+  width: 300px; /* Standard width for audio controls */
+  height: 30px; /* Adjust height as needed */
+  background-color: transparent; /* Make audio player background transparent */
+  /* Style the native audio player controls if possible, otherwise rely on default browser styles */
+}
+/* For Firefox/Chrome native audio player controls */
+.player-controls audio::-webkit-media-controls-panel {
+  background-color: var(--secondary-bg-dark);
+  color: var(--text-light);
+}
+.player-controls audio::-webkit-media-controls-play-button,
+.player-controls audio::-webkit-media-controls-volume-slider,
+.player-controls audio::-webkit-media-controls-current-time-display,
+.player-controls audio::-webkit-media-controls-time-remaining-display {
+  color: var(--accent-green);
+}

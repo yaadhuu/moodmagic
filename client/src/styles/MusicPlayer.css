@@ -1,0 +1,18 @@
+.music-player {
+  text-align:center;
+  max-width:400px;
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.1);
+}
+.album-art {
+  width:240px; height:240px;
+  border-radius:12px;
+  margin-bottom:20px;
+  transition:transform .4s;
+}
+.album-art:hover { transform:scale(1.05); }
+.info h3{font-size:1.2rem;margin:10px 0;}
+.info p{color:#555;margin-bottom:12px;}
+.placeholder{color:#999;font-size:1rem;padding:40px;}

@@ -1,0 +1,62 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap'); /* For specific titles if preferred */
+
+:root {
+  --primary-bg-dark: #121212;
+  --secondary-bg-dark: #1e1e1e;
+  --tertiary-bg-dark: #282828;
+  --text-light: #fefefe;
+  --text-muted: #b3b3b3;
+  --accent-green: #1DB954; /* Spotify green */
+  --accent-green-hover: #1ed760;
+  --border-dark: #222;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif; /* Default font */
+  background-color: var(--primary-bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Scrollbar styles (minimalist) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}

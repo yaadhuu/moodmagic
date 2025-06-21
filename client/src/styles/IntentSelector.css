@@ -1,0 +1,3 @@
+/* src/styles/IntentSelector.css */
+/* Can reuse MoodSelector styles as they are structurally similar */
+@import './MoodSelector.css';

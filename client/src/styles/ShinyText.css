@@ -1,0 +1,39 @@
+.shiny-text {
+  position: relative;
+  display: inline-block; /* Or block, depending on desired layout */
+  font-weight: bold; /* Example style, adjust as needed */
+  color: #333; /* Base text color */
+  overflow: hidden; /* Important for the shining effect */
+}
+
+.shiny-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8), /* Adjust white alpha for intensity */
+    transparent
+  );
+  animation: shiny-effect var(--animationDuration) infinite;
+}
+
+.shiny-text.disabled::before {
+  animation: none; /* Disable animation if 'disabled' prop is true */
+}
+
+@keyframes shiny-effect {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}

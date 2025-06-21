@@ -1,0 +1,41 @@
+/* src/styles/TopBar.css */
+
+.top-bar {
+  position: sticky; /* Stays at the top when scrolling */
+  top: 0;
+  width: 100%;
+  height: 80px; /* Height of the top bar */
+  background-color: var(--primary-bg-dark); /* Match body background */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align search to the right */
+  padding: 0 30px;
+  z-index: 999; /* Ensure it's above other content but below cursor */
+  border-bottom: 1px solid var(--border-dark); /* Subtle separator */
+}
+
+.search-container {
+  position: relative;
+  width: 250px; /* Fixed width for search bar */
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 50px; /* Pill shape */
+  border: 1px solid var(--border-dark);
+  background-color: var(--tertiary-bg-dark);
+  color: var(--text-light);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  border-color: var(--accent-green);
+  box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.3);
+}
