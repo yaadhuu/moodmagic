@@ -1,4 +1,3 @@
-// client/src/App.jsx
 import React, { useState, useEffect } from "react";
 import LandingPage from "./components/LandingPage";
 import MoodPage from "./components/MoodPage";
@@ -8,7 +7,7 @@ import MusicPlayerBar from "./components/MusicPlayerBar";
 import AnimatedCursor from "react-animated-cursor";
 import { Element, scroller } from "react-scroll";
 import axios from "axios";
-import "./App.css";
+import "./App.css"; // Only one CSS import now!
 
 export default function App() {
   const [entered, setEntered] = useState(false);
@@ -17,7 +16,12 @@ export default function App() {
   const [recommendedSongs, setRecommendedSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredSongs, setFilteredSongs] = useState([]); // New state for filtered songs
+  const [filteredSongs, setFilteredSongs] = useState([]); // State for filtered songs
+
+  // IMPORTANT: Replace "YOUR_RENDER_BACKEND_URL_HERE" with your actual Render backend URL
+  // Example: "https://mood-magic-backend-xyz123.onrender.com"
+  const backendBaseUrl = "https://moodmagic.onrender.com"; 
+
 
   const handleEnter = () => {
     setEntered(true);
@@ -33,19 +37,21 @@ export default function App() {
     const fetchRecommendations = async () => {
       if (mood && intent) {
         try {
-          const res = await axios.post("http://localhost:5000/api/song", { mood, intent });
-          setRecommendedSongs(res.data);
-          setCurrentSong(null);
+          // Use the dynamic backendBaseUrl for the API call
+          const res = await axios.post(`${backendBaseUrl}/api/song`, { mood, intent });
+          setRecommendedSongs(res.data); // Backend now returns an array
+          setCurrentSong(null); // Clear current song when new recommendations load
         } catch (error) {
           console.error("Error fetching recommendations:", error);
           setRecommendedSongs([]);
+          // Provide user feedback, e.g., "Failed to load songs. Please try again."
         }
       } else {
-        setRecommendedSongs([]);
+        setRecommendedSongs([]); // Clear if mood/intent is not selected
       }
     };
     fetchRecommendations();
-  }, [mood, intent]);
+  }, [mood, intent, backendBaseUrl]); // Added backendBaseUrl to dependency array
 
   // Effect to filter songs whenever recommendedSongs or searchTerm changes
   useEffect(() => {
@@ -71,7 +77,7 @@ export default function App() {
       <AnimatedCursor
         innerSize={8}
         outerSize={35}
-        color="0, 0, 0"
+        color="0, 0, 0" // Black cursor for white landing page
         outerAlpha={0.3}
         innerScale={1}
         outerScale={2}
@@ -92,8 +98,8 @@ export default function App() {
               setMood={setMood}
               intent={intent}
               setIntent={setIntent}
-              recommendedSongs={filteredSongs} // This line is now clean
-              onSelectSong={setCurrentSong}
+              recommendedSongs={filteredSongs}
+              onSelectSong={setCurrentSong} // Pass function to set current song for playback
             />
           </div>
           <MusicPlayerBar currentSong={currentSong} />
